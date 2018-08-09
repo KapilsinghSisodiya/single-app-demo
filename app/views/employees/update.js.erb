@@ -1,0 +1,7 @@
+if(<%=@employee.errors.any?%>==true){
+  $("#error").html("<%= j render 'employees/errors' %>")
+} else {
+  $("#edit_employee_modal_<%= @employee.id %>").modal('hide')
+  $('.modal-backdrop').hide();
+  $("tbody#employees_list").html("<%= j render 'employees_list' %>")
+}

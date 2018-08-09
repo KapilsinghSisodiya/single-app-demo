@@ -1,0 +1,14 @@
+- @employees.each_with_index do |employee,index|
+  div{id="edit_employee_modal_#{employee.id}" class="modal fade" role="dialog"}
+  tr{class="#{index%2==0 ? 'warning' : 'info'}" id="employee_#{employee.id}"}
+    td= link_to employee.id,employee_path(employee)
+    td= employee.email
+    td= employee.first_name
+    td= employee.last_name
+    td= employee.address
+    td
+      .col-md-3= link_to edit_employee_path(employee), remote:true do
+        i.glyphicon.glyphicon-edit
+      .col-md-3= link_to employee_path(employee), method: :delete, remote:true do
+        i.glyphicon.glyphicon-remove
+

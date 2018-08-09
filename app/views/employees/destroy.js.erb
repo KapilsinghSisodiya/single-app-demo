@@ -1,0 +1,4 @@
+$("tr#employee_<%=@employee.id%>").remove();
+$("tbody#employees_list").html("<%= j render 'employees_list' %>")
+$(".pull-right").html("<%= j will_paginate @employees %>")
+$('.pagination a').attr('data-remote', 'true');

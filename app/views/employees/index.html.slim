@@ -1,0 +1,36 @@
+.row
+  .col-md-8= link_to "New Employee", "javascript:void(0)", data:{ toggle: "modal", target: "#new_employee_modal"}, class: 'btn btn-primary'
+
+  = form_tag employees_path, :method => 'get', :id => "employees_search" do
+    .form-group
+      .col-md-3= text_field_tag :search, params[:search], class: 'form-control'
+      = submit_tag "Search", class: 'btn btn-primary'
+table.table.table-striped{style="margin-top:30px;"}
+  thead
+    tr
+      th #
+      th Email
+      th First Name
+      th Last Name
+      th Address
+      th Actions
+  tbody#employees_list= render "employees_list"
+.pull-right= will_paginate @employees
+
+= render 'employees/new_employee_modal'
+
+javascript:
+  $(function() {
+    $('.pagination a').attr('data-remote', 'true');
+    $(".pagination a").on("click", function() {
+      //$(".pagination").html("Page is loading...");
+      $.getScript(this.href);
+      return false;
+    });
+    $("#employees_search input").keyup(function() {
+      $.get($("#employees_search").attr("action"), $("#employees_search").serialize(), null, "script");
+      return false;
+    });
+
+  });
+

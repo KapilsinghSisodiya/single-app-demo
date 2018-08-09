@@ -1,0 +1,23 @@
+/! Sidebar
+nav#sidebar
+  .sidebar-header
+    h3 Single Page App
+  ul.list-unstyled.components
+    li
+      a[href="/"]
+        | Home
+    - if admin_signed_in?
+      li
+        a[href="/employees/"] 
+          | Employees
+    - if user_signed_in?
+      li
+        a[href="/employees/sign_out"] 
+          | Logout
+    - else
+        li
+          a[href="/employees/sign_up"] 
+            | Sign Up
+        li
+          a[href="/employees/sign_in"] 
+            | Login

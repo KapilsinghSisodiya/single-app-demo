@@ -1,0 +1,29 @@
+#new_employee_modal.modal.fade[role="dialog"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          | ×
+        h4 New Employee
+      .modal-body.panel-body
+        = form_for Employee.new, remote:true do |f|
+          #error
+          .form-group
+            = f.label :first_name
+            = f.text_field :first_name, autofocus: true, class: 'form-control'
+          .form-group
+            = f.label :last_name
+            = f.text_field :last_name, class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.email_field :email, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label :address
+            = f.text_field :address, class: 'form-control'
+          = f.submit "Save", class: 'btn btn-primary'
+      .modal-footer
+        button.btn.btn-danger[type="button" data-dismiss="modal"]
+          | Close

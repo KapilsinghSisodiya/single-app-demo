@@ -1,0 +1,8 @@
+if(<%=@employee.errors.any?%>==true){
+  $("#error").html("<%= j render 'employees/errors' %>")
+} else {
+  $("#new_employee_modal").modal('hide')
+  $("tbody#employees_list").html("<%= j render 'employees_list' %>")
+  $(".pull-right").html("<%= j will_paginate @employees %>")
+  $('.pagination a').attr('data-remote', 'true');
+}
