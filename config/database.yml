@@ -19,9 +19,5 @@ test:
   password: 12345678
 
 production:
-  <<: *default
-  host: localhost
-  database: singlepage_production
-  username: postgres
-  password: 12345678
+  url: <%= ENV["DATABASE_URL"] %>
 
